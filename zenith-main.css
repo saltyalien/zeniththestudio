@@ -1,66 +1,157 @@
-* {
+/* =============================================
+   ZENITH The Studio — Main Stylesheet
+   ============================================= */
+
+/* ---------------------------------------------
+   1. Custom Properties
+   --------------------------------------------- */
+:root {
+  /* Colores */
+  --clr-bg: #1C1D22;
+  --clr-text: #ffffff;
+  --clr-accent: #B3E5FB;
+  --clr-primary: #EA2024;
+  --clr-hover: #1449a6;
+  --clr-overlay: #02051c98;
+
+  /* Tipografía */
+  --ff-gantari: "Gantari", "CooperHewitt", sans-serif;
+  --ff-cooper: "CooperHewitt", sans-serif;
+
+  /* Layout */
+  --navbar-height: 7.5rem;
+  --content-max-width: 900px;
+  --gallery-max-width: 1200px;
+}
+
+/* ---------------------------------------------
+   2. Reset
+   --------------------------------------------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-wrap: balance;
+}
+
+html {
   scroll-behavior: smooth;
-  scroll-padding: 7.5rem;
+  scroll-padding: var(--navbar-height);
 }
 
-.gantari-wght {
-  font-family: "Gantari", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
+/* ---------------------------------------------
+   3. Tipografía
+   --------------------------------------------- */
 
+/* 3a. Fuentes locales — CooperHewitt */
 @font-face {
-  font-family: "CooperHewitt-Book";
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Book.eot) format("embedded-opentype");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Book.svg) format("svg");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Book.woff) format("woff");
+  font-family: "CooperHewitt";
+  src: url("CooperHewitt-WebFonts-public/CooperHewitt-Book.woff") format("woff");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "CooperHewitt-Medium";
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Medium.eot) format("embedded-opentype");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Medium.svg) format("svg");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Medium.woff) format("woff");
+  font-family: "CooperHewitt";
+  src: url("CooperHewitt-WebFonts-public/CooperHewitt-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "CooperHewitt-Bold";
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Bold.eot) format("embedded-opentype");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Bold.svg) format("svg");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Bold.woff) format("woff");
+  font-family: "CooperHewitt";
+  src: url("CooperHewitt-WebFonts-public/CooperHewitt-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
+/* 3b. Headings y texto base */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+p {
+  text-wrap: balance;
+}
+
+h1 {
+  font-family: var(--ff-gantari);
+  font-weight: 900;
+  font-optical-sizing: auto;
+  text-align: center;
+  color: var(--clr-accent);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: var(--ff-gantari);
+  font-weight: 900;
+  font-optical-sizing: auto;
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-family: var(--ff-cooper);
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+
+hgroup p {
+  font-family: var(--ff-cooper);
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+
+p {
+  font-family: var(--ff-cooper);
+  font-weight: 400;
+  max-width: var(--content-max-width);
+  line-height: 1.2;
+}
+
+blockquote {
+  max-width: 700px;
+  justify-self: center;
+  font-family: var(--ff-cooper);
+  font-weight: 700;
+  background-color: var(--clr-accent);
+  color: var(--clr-primary);
+  padding: 1rem 1rem 1rem 2rem;
+  margin: 0 1rem 1rem 0;
+}
+
+/* ---------------------------------------------
+   4. Body
+   --------------------------------------------- */
 body {
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100%;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   align-items: center;
-  background-color: #1C1D22;
-  color: #ffffff;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
 }
 
-
+/* ---------------------------------------------
+   5. Navbar
+   --------------------------------------------- */
 .navbar {
   width: 60%;
-  max-height: 7.5rem;
+  max-height: var(--navbar-height);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 0.5rem;
-  background-color: #1C1D22;
-  border-radius: 0;
+  background-color: var(--clr-bg);
 }
 
 .navbar ul {
@@ -68,121 +159,77 @@ body {
   justify-content: center;
   align-items: center;
   list-style: none;
-  max-width: 900px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 0 24px;
   gap: 1rem;
   overflow: hidden;
-
 }
 
 .navbar ul li a {
   display: flex;
   padding: 14px 24px;
-  font-family: "CooperHewitt", sans-serif;
+  font-family: var(--ff-cooper);
   font-weight: 700;
   text-decoration: none;
   text-align: center;
-  color: #B3E5FB;
+  color: var(--clr-accent);
 }
-.btn{
-  display:inline-flexbox;
+
+/* ---------------------------------------------
+   6. Botones
+   --------------------------------------------- */
+.btn,
+.btn-active {
+  display: inline-flex;
   align-self: stretch;
-  background-color: #1C1D22;
   border: none;
   border-radius: 5%;
   transition: background-color 0.3s ease;
 }
-.btn:hover,
-.btn-active{
-  display:inline-flexbox;
-  align-self: stretch;
-  background-color: #EA2024;
-  border: none;
-  border-radius: 5%;
+
+.btn {
+  background-color: var(--clr-bg);
 }
 
+.btn:hover,
+.btn-active {
+  background-color: var(--clr-primary);
+}
+
+/* ---------------------------------------------
+   7. Hero
+   --------------------------------------------- */
 .Hero {
-  position: relative;
-  background-position-y: top;
-  transform: translateY(-7.5rem);
+  height: 100dvh;
+  width: 100%;
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
   background-image: url(img/Hero.jpg);
-  height: 100dvh;
-  width: 100dvw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 1rem;
 }
 
-.hero-items {
-  width: 100%;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+.Hero img {
+  max-width: 80%;
+  height: auto;
+  max-height: 35dvh;
 }
 
-.Hero h1 {
-  transform: translateY(-270px);
-}
-
-h1 {
-  font-family: 'Gantari', "CooperHewitt", sans-serif;
-  font-weight: 900;
-  text-align: center;
-  color: #B3E5FB;
-  margin-bottom: 1rem;
-}
-
-hgroup p{
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 700;
-  color: #B3E5FB;
-}
-
-h2 {
-  font-family: 'Gantari', "CooperHewitt", sans-serif;
-  font-weight: 900;
-  color: #EA2024;
-  margin-bottom: 0.5rem;
-}
-
-h3 {
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 700;
-  color: #B3E5FB;
-}
-
-p {
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 400;
-  max-width: 900px;
-  line-height: 120%;
-}
-
-blockquote {
-  max-width: 700px;
-  justify-self: center;
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 700;
-  background-color: #B3E5FB;
-  color: #EA2024;
-  padding: 1rem 1rem 1rem 2rem;
-  margin: 0 1rem 1rem 0;
-}
-
+/* ---------------------------------------------
+   8. Sección — Nosotros / Profile
+   --------------------------------------------- */
 .Nosotros {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 900px;
+  max-width: var(--content-max-width);
   margin: 1rem;
 }
 
@@ -190,9 +237,9 @@ blockquote {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   width: 100%;
-  max-width: 900px;
+  max-width: var(--content-max-width);
   margin: 1rem;
 }
 
@@ -204,6 +251,8 @@ blockquote {
 
 .Encabezado img {
   height: 300px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .Encabezado hgroup {
@@ -216,13 +265,16 @@ blockquote {
   padding: 0 1rem;
 }
 
+/* ---------------------------------------------
+   9. Sección — Portafolio / Galería
+   --------------------------------------------- */
 .Portafolio {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--gallery-max-width);
   padding: 0 24px;
   margin: 1rem;
   text-align: center;
@@ -230,16 +282,11 @@ blockquote {
 
 .intro-portafolio {
   width: 100%;
-  max-width: 900px;
+  max-width: var(--content-max-width);
   margin: 0 auto 2rem;
 }
 
-.cont-gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
+/* 9a. Filtros */
 .filtros {
   display: flex;
   justify-content: center;
@@ -250,23 +297,26 @@ blockquote {
 
 .filter-btn {
   display: inline-block;
-  background: #1C1D22;
+  background: var(--clr-bg);
   border: none;
-  color: #ffffff;
+  color: var(--clr-text);
   padding: 8px 16px;
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.filter-btn:hover {
-  background: #1449a6;
-  color: #ffffff;
-}
-
+.filter-btn:hover,
 .filter-btn.active {
-  background: #1449a6;
-  color: #ffffff;
+  background: var(--clr-hover);
+  color: var(--clr-text);
+}
+
+/* 9b. Grilla */
+.cont-gallery {
+  max-width: var(--gallery-max-width);
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .gallery {
@@ -286,9 +336,17 @@ blockquote {
   grid-row-end: span var(--span);
 }
 
-.gallery-item.tall { --span: 30; }
-.gallery-item.medium { --span: 20; }
-.gallery-item.short { --span: 10; }
+.gallery-item.tall {
+  --span: 30;
+}
+
+.gallery-item.medium {
+  --span: 20;
+}
+
+.gallery-item.short {
+  --span: 10;
+}
 
 .gallery-item img {
   width: 100%;
@@ -302,14 +360,12 @@ blockquote {
   transform: scale(1.05);
 }
 
+/* 9c. Overlay */
 .overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  background: #02051c98;
-  color: #ffffff;
+  inset: 0;
+  background: var(--clr-overlay);
+  color: var(--clr-text);
   padding: 10px;
   text-align: left;
   transform: translateY(100%);
@@ -321,15 +377,15 @@ blockquote {
 }
 
 .overlay h3 {
-  font-family: "CooperHewitt", sans-serif;
+  font-family: var(--ff-cooper);
   font-weight: 500;
-  color: #B3E5FB;
+  color: var(--clr-accent);
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
 .overlay p {
-  font-family: "CooperHewitt", sans-serif;
+  font-family: var(--ff-cooper);
   font-weight: 400;
   font-size: 0.9rem;
   text-align: left;
@@ -338,15 +394,19 @@ blockquote {
   margin: 0;
 }
 
+/* ---------------------------------------------
+   10. Modal
+   --------------------------------------------- */
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #B3E5FB;
+  inset: 0;
+  background-color: var(--clr-accent);
+}
+
+.modal.is-open {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -362,7 +422,7 @@ blockquote {
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #ffffff;
+  color: var(--clr-text);
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
@@ -371,25 +431,16 @@ blockquote {
 .caption {
   margin: 15px auto;
   text-align: center;
-  color: #ffffff;
+  color: var(--clr-text);
   max-width: 80%;
 }
 
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ---------------------------------------------
+   11. Footer
+   --------------------------------------------- */
 footer {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--gallery-max-width);
   padding: 24px;
   margin-top: auto;
   display: flex;
@@ -400,9 +451,10 @@ footer {
 }
 
 footer ul {
-  font-family: "CooperHewitt", sans-serif;
+  font-family: var(--ff-cooper);
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   padding: 0;
@@ -412,20 +464,56 @@ footer ul {
 footer ul li a {
   padding: 0.5rem 1rem;
   text-decoration: none;
-  font-family: "CooperHewitt", sans-serif;
+  font-family: var(--ff-cooper);
   font-weight: 500;
-  color: #B3E5FB;
+  color: var(--clr-accent);
 }
 
 footer ul li a:hover,
 footer ul li a:active {
   text-decoration: underline;
-  text-decoration-color: #B3E5FB;
+  text-decoration-color: var(--clr-accent);
   text-underline-offset: 4px;
 }
 
 footer p {
   text-align: center;
-  font-size: 12pt;
+  font-size: 1rem;
   margin: 0;
+}
+
+/* ---------------------------------------------
+   12. Media Queries
+   --------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .Profile {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .navbar ul li a {
+    padding: 10px 16px;
+  }
 }
