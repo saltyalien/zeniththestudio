@@ -1,212 +1,262 @@
-* {
+/* =============================================
+   ZENITH The Studio — Main Stylesheet
+   ============================================= */
+
+/* ---------------------------------------------
+   1. Custom Properties
+   --------------------------------------------- */
+:root {
+  /* Colores */
+  --clr-bg: #1C1D22;
+  --clr-text: #ffffff;
+  --clr-accent: #B3E5FB;
+  --clr-primary: #EA2024;
+  --clr-hover: #1449a6;
+  --clr-overlay: #02051c98;
+
+  /* Tipografía */
+  --ff-gantari: "Gantari", "CooperHewitt", sans-serif;
+  --ff-cooper: "CooperHewitt", sans-serif;
+
+  /* Layout */
+  --navbar-height: 7.5rem;
+  --content-max-width: 900px;
+  --gallery-max-width: 1200px;
+
+  /* Transiciones */
+  --transition-bg: background-color 0.3s ease;
+}
+
+/* ---------------------------------------------
+   2. Reset
+   --------------------------------------------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-wrap: balance;
+}
+
+html {
   scroll-behavior: smooth;
-  scroll-padding: 7.5rem;
+  scroll-padding: var(--navbar-height);
 }
 
-.gantari-wght {
-  font-family: "Gantari", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
+/* ---------------------------------------------
+   3. Tipografía
+   --------------------------------------------- */
 
+/* 3a. Fuentes locales — CooperHewitt */
 @font-face {
-  font-family: "CooperHewitt-Book";
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Book.eot) format("embedded-opentype");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Book.svg) format("svg");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Book.woff) format("woff");
+  font-family: "CooperHewitt";
+  src: url("CooperHewitt-WebFonts-public/CooperHewitt-Book.woff") format("woff");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "CooperHewitt-Medium";
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Medium.eot) format("embedded-opentype");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Medium.svg) format("svg");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Medium.woff) format("woff");
+  font-family: "CooperHewitt";
+  src: url("CooperHewitt-WebFonts-public/CooperHewitt-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "CooperHewitt-Bold";
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Bold.eot) format("embedded-opentype");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Bold.svg) format("svg");
-  src: url(CooperHewitt-WebFonts-public/CooperHewitt-Bold.woff) format("woff");
+  font-family: "CooperHewitt";
+  src: url("CooperHewitt-WebFonts-public/CooperHewitt-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
+/* 3b. Headings y texto base */
+h1,
+h2,
+h3,
+blockquote,
+p {
+  text-wrap: balance;
+}
+
+h1, h2 {
+  font-family: var(--ff-gantari);
+  font-weight: 900;
+  font-optical-sizing: auto;
+}
+
+h1 {
+  text-align: center;
+  color: var(--clr-accent);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: var(--clr-primary);
+  margin-bottom: 0.5rem;
+}
+
+h3, .hgroup-text {
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+
+p {
+  max-width: var(--content-max-width);
+  line-height: 1.2;
+}
+
+blockquote {
+  max-width: 700px;
+  font-weight: 700;
+  background-color: var(--clr-accent);
+  color: var(--clr-primary);
+  padding: 1rem 1rem 1rem 2rem;
+  margin: 0 1rem 1rem 0;
+}
+
+/* ---------------------------------------------
+   4. Body
+   --------------------------------------------- */
 body {
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100%;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   align-items: center;
-  background-color: #1C1D22;
-  color: #ffffff;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--ff-cooper);
+  font-weight: 400;
 }
 
-
+/* ---------------------------------------------
+   5. Navbar
+   --------------------------------------------- */
 .navbar {
-  width: 60%;
-  max-height: 7.5rem;
+  width: 100%;
+  max-height: var(--navbar-height);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 0.5rem;
-  background-color: #1C1D22;
-  border-radius: 0;
+  background-color: var(--clr-bg);
 }
 
-.navbar ul {
+.nav-list {
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
-  max-width: 900px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 0 24px;
   gap: 1rem;
   overflow: hidden;
-
 }
 
-.navbar ul li a {
+.nav-link {
   display: flex;
   padding: 14px 24px;
-  font-family: "CooperHewitt", sans-serif;
   font-weight: 700;
   text-decoration: none;
   text-align: center;
-  color: #B3E5FB;
+  color: var(--clr-accent);
 }
-.btn{
-  display:inline-flexbox;
-  align-self: stretch;
-  background-color: #1C1D22;
+
+/* ---------------------------------------------
+   6. Botones
+   --------------------------------------------- */
+
+/* Base compartida para todos los botones */
+.btn, .btn-active, .filter-btn {
   border: none;
-  border-radius: 5%;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: var(--transition-bg);
 }
-.btn:hover,
-.btn-active{
-  display:inline-flexbox;
+
+/* Botones del navbar */
+.btn, .btn-active {
+  display: inline-flex;
   align-self: stretch;
-  background-color: #EA2024;
-  border: none;
   border-radius: 5%;
 }
 
+.btn {
+  background-color: var(--clr-bg);
+}
+
+.btn:hover, .btn-active {
+  background-color: var(--clr-primary);
+}
+
+/* Botones de filtro de galería */
+.filter-btn {
+  display: inline-block;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  padding: 8px 16px;
+  border-radius: 0;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background-color: var(--clr-hover);
+  color: var(--clr-text);
+}
+
+/* ---------------------------------------------
+   7. Hero
+   --------------------------------------------- */
 .Hero {
-  position: relative;
-  background-position-y: top;
-  transform: translateY(-7.5rem);
+  height: 100dvh;
+  width: 100%;
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
   background-image: url(img/Hero.jpg);
-  height: 100dvh;
-  width: 100dvw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 1rem;
 }
 
-.hero-items {
+.hero-logo {
+  max-width: 80%;
+  height: auto;
+  max-height: 35dvh;
+}
+
+/* ---------------------------------------------
+   8. Sección — Nosotros / Profile
+   --------------------------------------------- */
+.Nosotros, .Profile {
   width: 100%;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-
-.Hero h1 {
-  transform: translateY(-270px);
-}
-
-h1 {
-  font-family: 'Gantari', "CooperHewitt", sans-serif;
-  font-weight: 900;
-  text-align: center;
-  color: #B3E5FB;
-  margin-bottom: 1rem;
-}
-
-hgroup p{
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 700;
-  color: #B3E5FB;
-}
-
-h2 {
-  font-family: 'Gantari', "CooperHewitt", sans-serif;
-  font-weight: 900;
-  color: #EA2024;
-  margin-bottom: 0.5rem;
-}
-
-h3 {
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 700;
-  color: #B3E5FB;
-}
-
-p {
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 400;
-  max-width: 900px;
-  line-height: 120%;
-}
-
-blockquote {
-  max-width: 700px;
-  justify-self: center;
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 700;
-  background-color: #B3E5FB;
-  color: #EA2024;
-  padding: 1rem 1rem 1rem 2rem;
-  margin: 0 1rem 1rem 0;
-}
-
-.Nosotros {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  max-width: 900px;
+  max-width: var(--content-max-width);
   margin: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-.Profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items:flex-start;
-  width: 100%;
-  max-width: 900px;
-  margin: 1rem;
-}
+.Nosotros { flex-direction: column; }
+.Profile  { align-items: flex-start; }
 
 .Encabezado {
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   max-width: fit-content;
 }
 
-.Encabezado img {
+.profile-img {
   height: 300px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
-.Encabezado hgroup {
+.profile-meta {
   margin: 1rem 1rem 0 0;
 }
 
@@ -216,30 +266,22 @@ blockquote {
   padding: 0 1rem;
 }
 
+/* ---------------------------------------------
+   9. Sección — Portafolio / Galería
+   --------------------------------------------- */
 .Portafolio {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--gallery-max-width);
   padding: 0 24px;
   margin: 1rem;
   text-align: center;
 }
 
-.intro-portafolio {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 2rem;
-}
-
-.cont-gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
+/* 9a. Filtros */
 .filtros {
   display: flex;
   justify-content: center;
@@ -248,25 +290,11 @@ blockquote {
   margin-bottom: 20px;
 }
 
-.filter-btn {
-  display: inline-block;
-  background: #1C1D22;
-  border: none;
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-  background: #1449a6;
-  color: #ffffff;
-}
-
-.filter-btn.active {
-  background: #1449a6;
-  color: #ffffff;
+/* 9b. Grilla */
+.cont-gallery {
+  max-width: var(--gallery-max-width);
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .gallery {
@@ -281,16 +309,15 @@ blockquote {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 0;
   cursor: pointer;
   grid-row-end: span var(--span);
 }
 
-.gallery-item.tall { --span: 30; }
+.gallery-item.tall   { --span: 30; }
 .gallery-item.medium { --span: 20; }
-.gallery-item.short { --span: 10; }
+.gallery-item.short  { --span: 10; }
 
-.gallery-item img {
+.gallery-img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -298,18 +325,16 @@ blockquote {
   display: block;
 }
 
-.gallery-item:hover img {
+.gallery-item:hover .gallery-img {
   transform: scale(1.05);
 }
 
+/* 9c. Overlay */
 .overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  background: #02051c98;
-  color: #ffffff;
+  inset: 0;
+  background: var(--clr-overlay);
+  color: var(--clr-text);
   padding: 10px;
   text-align: left;
   transform: translateY(100%);
@@ -320,17 +345,14 @@ blockquote {
   transform: translateY(0);
 }
 
-.overlay h3 {
-  font-family: "CooperHewitt", sans-serif;
+.overlay-title {
   font-weight: 500;
-  color: #B3E5FB;
+  color: var(--clr-accent);
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
-.overlay p {
-  font-family: "CooperHewitt", sans-serif;
-  font-weight: 400;
+.overlay-text {
   font-size: 0.9rem;
   text-align: left;
   line-height: 1.4;
@@ -338,31 +360,28 @@ blockquote {
   margin: 0;
 }
 
+/* ---------------------------------------------
+   10. Modal
+   --------------------------------------------- */
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #B3E5FB;
-  justify-content: center;
-  align-items: center;
+  inset: 0;
+  background-color: var(--clr-accent);
 }
 
-.modal-content {
-  max-width: 90%;
-  max-height: 90%;
-  display: block;
-  margin: auto;
+.modal.is-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .close {
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #ffffff;
+  color: var(--clr-text);
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
@@ -371,25 +390,16 @@ blockquote {
 .caption {
   margin: 15px auto;
   text-align: center;
-  color: #ffffff;
+  color: var(--clr-text);
   max-width: 80%;
 }
 
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ---------------------------------------------
+   11. Footer
+   --------------------------------------------- */
 footer {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--gallery-max-width);
   padding: 24px;
   margin-top: auto;
   display: flex;
@@ -399,33 +409,64 @@ footer {
   gap: 1rem;
 }
 
-footer ul {
-  font-family: "CooperHewitt", sans-serif;
+.footer-list {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   padding: 0;
   margin: 0;
 }
 
-footer ul li a {
+.footer-link {
   padding: 0.5rem 1rem;
   text-decoration: none;
-  font-family: "CooperHewitt", sans-serif;
   font-weight: 500;
-  color: #B3E5FB;
+  color: var(--clr-accent);
 }
 
-footer ul li a:hover,
-footer ul li a:active {
+.footer-link:hover,
+.footer-link:active {
   text-decoration: underline;
-  text-decoration-color: #B3E5FB;
+  text-decoration-color: var(--clr-accent);
   text-underline-offset: 4px;
 }
 
-footer p {
+.footer-text {
   text-align: center;
-  font-size: 12pt;
+  font-size: 1rem;
   margin: 0;
+}
+
+/* ---------------------------------------------
+   12. Media Queries
+   --------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .Profile {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 10px 16px;
+  }
 }

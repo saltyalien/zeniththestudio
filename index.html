@@ -6,22 +6,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <script async src="scripts/main.js"></script>
-  <nav class="navbar">
-    <ul class="btns">
-      <button class="btn"><li><a href="#Portafolio" target="_self">Portafolio</a></li></button>
-      <button class="btn"><li><a href="#Nosotros" target="_self">ZENITH<br>theStudio</a></li></button>
-      <button class="btn-active"><li><a href="#Contacto" target="_self">Contacto</a></li></button>
-    </ul>
-</nav>
-</script>
+    <script async src="scripts/main.js"></script>
 </head>
 <body>
- <section class="Hero">
-      <div class="hero-items">
-        <img src="logo/Principal.svg" alt="Zenith The Studio logo">
-        <h1>DE TU RAÍZ AL CÉNIT CREATIVO</h1>
-      </div>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="btn"><a class="nav-link" href="#Portafolio" target="_self">Portafolio</a></li>
+      <li class="btn"><a class="nav-link" href="#Nosotros" target="_self">ZENITH<br>theStudio</a></li>
+      <li class="btn-active"><a class="nav-link" href="#Contacto" target="_self">Contacto</a></li>
+    </ul>
+  </nav>
+  <section class="Hero">
+      <img class="hero-logo" src="logo/Zenith-Logo.svg" alt="Zenith The Studio logo">
+      <h1>DE TU RAÍZ AL CÉNIT CREATIVO</h1>
   </section> 
   <section class="Nosotros" id="Nosotros">
     <h2>Nosotros</h2>
@@ -35,10 +32,10 @@
   </section>
   <section class="Profile">
     <div class="Encabezado">
-      <img src="img/Adi.png" alt="Adi Portillo" >
-        <hgroup>
+      <img class="profile-img" src="img/Adi.png" alt="Adi Portillo" >
+        <hgroup class="profile-meta">
           <h2>Adi Portillo</h2>
-          <p>Founder</p>
+          <p class="hgroup-text">Founder</p>
         </hgroup>
     </div>
     <div class="Resumen">
@@ -61,7 +58,7 @@
   <section class="Portafolio" id="Portafolio">
       <hgroup>
         <h2>Nuestros Proyectos</h2>
-        <p>Este portafolio reúne una selección de proyectos desarrollados por Zenith The Studio, explorando la dirección de arte, la identidad visual y la construcción de universos creativos contemporáneos.<br>A través de una visión influenciada por la música, la moda y la cultura digital, cada proyecto combina narrativa, estrategia y estética para desarrollar experiencias visuales con identidad propia.</p>
+        <p class="hgroup-text">Este portafolio reúne una selección de proyectos desarrollados por Zenith The Studio, explorando la dirección de arte, la identidad visual y la construcción de universos creativos contemporáneos.<br>A través de una visión influenciada por la música, la moda y la cultura digital, cada proyecto combina narrativa, estrategia y estética para desarrollar experiencias visuales con identidad propia.</p>
       </hgroup>
     <div class="cont-gallery">
       <div class="filtros">
@@ -70,28 +67,28 @@
       </div>
       <div class="gallery">
         <div class="gallery-item medium">
-          <img src="img/dubehe.png" alt="Textiles DuBehe">
+          <img class="gallery-img" src="img/dubehe.png" alt="Textiles DuBehe">
           <div class="overlay">
-            <h3>DuBehe</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <h3 class="overlay-title">DuBehe</h3>
+            <p class="overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Nulla pellentesque purus quis magna tempor, at congue mauris aliquet. 
             Phasellus eu nibh ac mauris varius efficitur non et quam.</p>
           </div>
        </div>
         <div class="gallery-item medium">
-          <img src="img/la-guera.png" alt="Caldos de gallina La Güera">
+          <img class="gallery-img" src="img/la-guera.png" alt="Caldos de gallina La Güera">
           <div class="overlay">
-            <h3>La Güera</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <h3 class="overlay-title">La Güera</h3>
+            <p class="overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Nulla pellentesque purus quis magna tempor, at congue mauris aliquet. 
             Phasellus eu nibh ac mauris varius efficitur non et quam.</p>
           </div>
        </div>
         <div class="gallery-item tall">
-          <img src="img/la-cuadra.png" alt="Post de Instagram La Cuadra">
+          <img class="gallery-img" src="img/la-cuadra.png" alt="Post de Instagram La Cuadra">
           <div class="overlay">
-            <h3>La Cuadra</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <h3 class="overlay-title">La Cuadra</h3>
+            <p class="overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Nulla pellentesque purus quis magna tempor, at congue mauris aliquet. 
             Phasellus eu nibh ac mauris varius efficitur non et quam.</p>
           </div>
@@ -106,13 +103,13 @@
 </body>
 <footer>
   <h2 class="Contacto" id="Contacto">Contacto</h2>
-  <ul>
-    <li>Teléfono:<a href="tel:+525512345678">+52 55 1234 5678</a></li>
-    <li>Email:<a href="mailto:zeniththestudio@gmail.com">zeniththestudio@gmail.com</a></li>
-    <li>Founder:<a href="https://www.instagram.com/zeniith.th">@ZENITH.THESTUDIO</a></li>
-    <li>The Studio:<a href="https://www.instagram.com/zenith.thestudio">@ZENITH.THESTUDIO</a></li>
+  <ul class="footer-list">
+    <li>Teléfono:<a class="footer-link" href="tel:+525512345678">+52 55 1234 5678</a></li>
+    <li>Email:<a class="footer-link" href="mailto:zeniththestudio@gmail.com">zeniththestudio@gmail.com</a></li>
+    <li>Founder:<a class="footer-link" href="https://www.instagram.com/zeniith.th">@ZENITH.THESTUDIO</a></li>
+    <li>The Studio:<a class="footer-link" href="https://www.instagram.com/zenith.thestudio">@ZENITH.THESTUDIO</a></li>
   </ul>
   <p class="Copyright">&copy; 2026 Zenith The Studio</p>
-  <p>A website made by MYO</p>
+  <p class="footer-text">A website made by MYO</p>
 </footer>
 </html>
