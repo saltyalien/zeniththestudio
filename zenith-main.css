@@ -22,6 +22,9 @@
   --navbar-height: 7.5rem;
   --content-max-width: 900px;
   --gallery-max-width: 1200px;
+
+  /* Transiciones */
+  --transition-bg: background-color 0.3s ease;
 }
 
 /* ---------------------------------------------
@@ -73,54 +76,40 @@ html {
 h1,
 h2,
 h3,
-h4,
-h5,
-h6,
 blockquote,
 p {
   text-wrap: balance;
 }
 
-h1 {
+h1, h2 {
   font-family: var(--ff-gantari);
   font-weight: 900;
   font-optical-sizing: auto;
+}
+
+h1 {
   text-align: center;
   color: var(--clr-accent);
   margin-bottom: 1rem;
 }
 
 h2 {
-  font-family: var(--ff-gantari);
-  font-weight: 900;
-  font-optical-sizing: auto;
   color: var(--clr-primary);
   margin-bottom: 0.5rem;
 }
 
-h3 {
-  font-family: var(--ff-cooper);
-  font-weight: 700;
-  color: var(--clr-accent);
-}
-
-hgroup p {
-  font-family: var(--ff-cooper);
+h3, .hgroup-text {
   font-weight: 700;
   color: var(--clr-accent);
 }
 
 p {
-  font-family: var(--ff-cooper);
-  font-weight: 400;
   max-width: var(--content-max-width);
   line-height: 1.2;
 }
 
 blockquote {
   max-width: 700px;
-  justify-self: center;
-  font-family: var(--ff-cooper);
   font-weight: 700;
   background-color: var(--clr-accent);
   color: var(--clr-primary);
@@ -139,13 +128,15 @@ body {
   align-items: center;
   background-color: var(--clr-bg);
   color: var(--clr-text);
+  font-family: var(--ff-cooper);
+  font-weight: 400;
 }
 
 /* ---------------------------------------------
    5. Navbar
    --------------------------------------------- */
 .navbar {
-  width: 60%;
+  width: 100%;
   max-height: var(--navbar-height);
   position: sticky;
   top: 0;
@@ -154,7 +145,7 @@ body {
   background-color: var(--clr-bg);
 }
 
-.navbar ul {
+.nav-list {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,10 +157,9 @@ body {
   overflow: hidden;
 }
 
-.navbar ul li a {
+.nav-link {
   display: flex;
   padding: 14px 24px;
-  font-family: var(--ff-cooper);
   font-weight: 700;
   text-decoration: none;
   text-align: center;
@@ -179,22 +169,41 @@ body {
 /* ---------------------------------------------
    6. Botones
    --------------------------------------------- */
-.btn,
-.btn-active {
+
+/* Base compartida para todos los botones */
+.btn, .btn-active, .filter-btn {
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-bg);
+}
+
+/* Botones del navbar */
+.btn, .btn-active {
   display: inline-flex;
   align-self: stretch;
-  border: none;
   border-radius: 5%;
-  transition: background-color 0.3s ease;
 }
 
 .btn {
   background-color: var(--clr-bg);
 }
 
-.btn:hover,
-.btn-active {
+.btn:hover, .btn-active {
   background-color: var(--clr-primary);
+}
+
+/* Botones de filtro de galería */
+.filter-btn {
+  display: inline-block;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  padding: 8px 16px;
+  border-radius: 0;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background-color: var(--clr-hover);
+  color: var(--clr-text);
 }
 
 /* ---------------------------------------------
@@ -215,7 +224,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.Hero img {
+.hero-logo {
   max-width: 80%;
   height: auto;
   max-height: 35dvh;
@@ -224,38 +233,30 @@ body {
 /* ---------------------------------------------
    8. Sección — Nosotros / Profile
    --------------------------------------------- */
-.Nosotros {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.Nosotros, .Profile {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-.Profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  max-width: var(--content-max-width);
-  margin: 1rem;
-}
+.Nosotros { flex-direction: column; }
+.Profile  { align-items: flex-start; }
 
 .Encabezado {
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   max-width: fit-content;
 }
 
-.Encabezado img {
+.profile-img {
   height: 300px;
   max-width: 100%;
   object-fit: contain;
 }
 
-.Encabezado hgroup {
+.profile-meta {
   margin: 1rem 1rem 0 0;
 }
 
@@ -280,12 +281,6 @@ body {
   text-align: center;
 }
 
-.intro-portafolio {
-  width: 100%;
-  max-width: var(--content-max-width);
-  margin: 0 auto 2rem;
-}
-
 /* 9a. Filtros */
 .filtros {
   display: flex;
@@ -293,23 +288,6 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
-}
-
-.filter-btn {
-  display: inline-block;
-  background: var(--clr-bg);
-  border: none;
-  color: var(--clr-text);
-  padding: 8px 16px;
-  border-radius: 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--clr-hover);
-  color: var(--clr-text);
 }
 
 /* 9b. Grilla */
@@ -331,24 +309,15 @@ body {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 0;
   cursor: pointer;
   grid-row-end: span var(--span);
 }
 
-.gallery-item.tall {
-  --span: 30;
-}
+.gallery-item.tall   { --span: 30; }
+.gallery-item.medium { --span: 20; }
+.gallery-item.short  { --span: 10; }
 
-.gallery-item.medium {
-  --span: 20;
-}
-
-.gallery-item.short {
-  --span: 10;
-}
-
-.gallery-item img {
+.gallery-img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -356,7 +325,7 @@ body {
   display: block;
 }
 
-.gallery-item:hover img {
+.gallery-item:hover .gallery-img {
   transform: scale(1.05);
 }
 
@@ -376,17 +345,14 @@ body {
   transform: translateY(0);
 }
 
-.overlay h3 {
-  font-family: var(--ff-cooper);
+.overlay-title {
   font-weight: 500;
   color: var(--clr-accent);
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
-.overlay p {
-  font-family: var(--ff-cooper);
-  font-weight: 400;
+.overlay-text {
   font-size: 0.9rem;
   text-align: left;
   line-height: 1.4;
@@ -409,13 +375,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.modal-content {
-  max-width: 90%;
-  max-height: 90%;
-  display: block;
-  margin: auto;
 }
 
 .close {
@@ -450,8 +409,7 @@ footer {
   gap: 1rem;
 }
 
-footer ul {
-  font-family: var(--ff-cooper);
+.footer-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -461,22 +419,21 @@ footer ul {
   margin: 0;
 }
 
-footer ul li a {
+.footer-link {
   padding: 0.5rem 1rem;
   text-decoration: none;
-  font-family: var(--ff-cooper);
   font-weight: 500;
   color: var(--clr-accent);
 }
 
-footer ul li a:hover,
-footer ul li a:active {
+.footer-link:hover,
+.footer-link:active {
   text-decoration: underline;
   text-decoration-color: var(--clr-accent);
   text-underline-offset: 4px;
 }
 
-footer p {
+.footer-text {
   text-align: center;
   font-size: 1rem;
   margin: 0;
@@ -492,10 +449,6 @@ footer p {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
-  .navbar {
-    width: 100%;
-  }
-
   .Profile {
     flex-direction: column;
     align-items: center;
@@ -508,12 +461,12 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .navbar ul {
+  .nav-list {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
-  .navbar ul li a {
+  .nav-link {
     padding: 10px 16px;
   }
 }
